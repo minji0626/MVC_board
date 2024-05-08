@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>목록</title>
 </head>
 <body>
-test
+	목록 페이지 입니다.
 </body>
 </html>
