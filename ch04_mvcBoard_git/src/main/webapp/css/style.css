@@ -110,4 +110,30 @@ button:hover {
     background-color: #007bff;
     color:white;
 }
+a {
+	text-decoration: none;
+	color: #c2c3c4;
+}
+a:hover {
+	color: black;
+}
 
+#detail_btn > input[type="button"] {
+    background-color: white;
+    color: black;
+    border: 1px solid #007bff; 
+    padding: 7px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    width: 10%;
+}
+
+#detail_btn > input[type="button"]:hover {
+    background-color: #007bff;
+    color:white;
+}
+
+#detail_page > li {
+    margin-bottom: 5px; /* 각 항목 사이의 간격 조정 */
+}
