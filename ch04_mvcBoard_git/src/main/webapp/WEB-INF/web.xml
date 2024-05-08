@@ -4,12 +4,15 @@
   <servlet>
   	<servlet-name>DispatcherServlet</servlet-name>
   	<servlet-class>kr.controller.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>propertiesPath</param-name>
+  		<param-value>/WEB-INF/ActionMap.properties</param-value>
+  	</init-param>
   </servlet>
   <servlet-mapping>
   	<servlet-name>DispatcherServlet</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
