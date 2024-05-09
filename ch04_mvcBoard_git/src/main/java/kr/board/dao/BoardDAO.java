@@ -1,4 +1,4 @@
-package kr.board.DAO;
+package kr.board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,7 +118,6 @@ public class BoardDAO {
 				board.setName(rs.getString("name"));
 				board.setEmail(rs.getString("email"));
 				board.setContent(rs.getString("content"));
-				board.setIp(rs.getString("ip"));
 				board.setPasswd(rs.getString("passwd"));
 				board.setReg_date(rs.getDate("reg_date"));
 			}
@@ -132,11 +131,43 @@ public class BoardDAO {
 	
 	// 글 수정
 	public void update(BoardVO boardVO) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn=DBUtil.getConnection();
+			sql = "UPDATE svboard  SET title=?, name=?, content=?, email=?, ip=? WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardVO.getTitle());
+			pstmt.setString(2, boardVO.getName());
+			pstmt.setString(3, boardVO.getContent());
+			pstmt.setString(4, boardVO.getEmail());
+			pstmt.setString(5, boardVO.getIp());
+			pstmt.setInt(6, boardVO.getNum());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 		
 	}
 	
 	// 글 삭제
 	public void delete(int num) throws Exception{
-		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "DELETE FROM svboard WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 	}
 }
